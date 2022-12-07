@@ -1,0 +1,10 @@
+Source: fcitx5-table-other
+Section: utils
+Priority: optional
+Maintainer: duckfly-tw <https://github.com/duckfly-tw>
+Homepage: https://github.com/fcitx/fcitx5-table-other
+
+Package: fcitx5-table-other
+Architecture: all
+Depends: fcitx5-chinese-addons
+Description: Other tables for Fcitx5
