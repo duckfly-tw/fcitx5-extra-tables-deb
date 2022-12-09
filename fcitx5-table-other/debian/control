@@ -1,7 +1,7 @@
 Source: fcitx5-table-other
 Section: utils
 Priority: optional
-Maintainer: duckfly-tw <https://github.com/duckfly-tw>
+Maintainer: duckfly-tw <duckfly-tw@developer.com>
 Homepage: https://github.com/fcitx/fcitx5-table-other
 
 Package: fcitx5-table-other
