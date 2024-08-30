@@ -10,9 +10,9 @@ rm -rf ./usr
 mkdir ./fakeroot
 cp -av ./debian ./fakeroot/debian
 
-wget -c "https://archlinux.org/packages/community/any/${PKG_NAME}/download" -O "${PKG_NAME}.pkg.tar.zst"
-tar xf $PKG_NAME.pkg.tar.zst usr .PKGINFO
-PKG_VERSION=$(awk -e '/^pkgver/ {print $3}' .PKGINFO)
+wget -c "https://archlinux.org/packages/extra/any/${PKG_NAME}/download" -O "${PKG_NAME}.pkg.tar.zst"
+tar -I zstd -xf $PKG_NAME.pkg.tar.zst usr .PKGINFO
+PKG_VERSION=$(awk '/^pkgver/ {print $3}' .PKGINFO)
 cp -av ./usr ./fakeroot/usr
 
 cd ./fakeroot
