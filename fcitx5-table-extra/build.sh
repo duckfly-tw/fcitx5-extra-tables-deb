@@ -13,7 +13,7 @@ cp -av ./debian ./fakeroot/debian
 wget -c "https://archlinux.org/packages/extra/any/${PKG_NAME}/download" -O "${PKG_NAME}.pkg.tar.zst"
 tar -I zstd -xf $PKG_NAME.pkg.tar.zst usr .PKGINFO
 #PKG_VERSION=$(awk '/^pkgver/ {print $3}' .PKGINFO)
-PKG_VERSION=$(awk -F '[= -]' '/^pkgver/ {print $4}' .PKGINFO)
+PKG_VERSION=$(awk -F '[=-]' '/^pkgver/ {print $2}' .PKGINFO | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
 cp -av ./usr ./fakeroot/usr
 
 cd ./fakeroot
