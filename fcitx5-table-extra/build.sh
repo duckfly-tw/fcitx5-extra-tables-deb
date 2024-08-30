@@ -12,10 +12,11 @@ cp -av ./debian ./fakeroot/debian
 
 wget -c "https://archlinux.org/packages/extra/any/${PKG_NAME}/download" -O "${PKG_NAME}.pkg.tar.zst"
 tar -I zstd -xf $PKG_NAME.pkg.tar.zst usr .PKGINFO
-PKG_VERSION=$(awk '/^pkgver/ {print $3}' .PKGINFO)
+#PKG_VERSION=$(awk '/^pkgver/ {print $3}' .PKGINFO)
+PKG_VERSION=$(awk -F '[= -]' '/^pkgver/ {print $4}' .PKGINFO)
 cp -av ./usr ./fakeroot/usr
 
 cd ./fakeroot
-dch --create --package "${PKG_NAME}" -v "${PKG_VERSION}" -D "stable" -u "low" "Latest Release" -c debian/changelog
+dch --create --package "${PKG_NAME}" -v "${PKG_VERSION}" -D "stable" -u "low" "Latest Release" -c debian/changelog < /dev/null
 debuild --no-tgz-check -i -us -uc
 # debuild --no-tgz-check --no-lintian -i -us -uc
